@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   }
 
   authorize() {
-    this.driveService.getAccessToken();
+    this.driveService.authorize();
   }
 
 
