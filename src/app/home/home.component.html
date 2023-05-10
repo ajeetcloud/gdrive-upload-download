@@ -1,1 +1,44 @@
-<button mat-raised-button color="primary" (click)="authorize()">Get OAuth2 code</button>
+<div class="container">
+  <mat-card class="card">
+    <mat-card-header>
+      <button *ngIf="!isAccessTokenPresent" class="auth" mat-raised-button color="primary" (click)="authorize()">
+        Get OAuth2 code
+      </button>
+      <div *ngIf="isAccessTokenPresent">
+        <mat-card-title>Google Drive Multi-File Upload</mat-card-title>
+        <mat-card-subtitle>
+          <span *ngIf="selectedFiles !== undefined">{{selectedFiles.length}} file(s) selected</span>
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+          <input #fileInput type="file" (change)="selectFile($event)" style="display:none;" ngModel multiple/>
+          <mat-form-field class="example-full-width" (click)="fileInput.click()">
+            <input matInput placeholder="Choose Multiple Files"
+                   value="{{filenames.join(', ')}}">
+            <mat-icon matSuffix>folder_open</mat-icon>
+          </mat-form-field>
+          &nbsp;
+          <button mat-raised-button color="primary" (click)="upload()">Upload</button>
+        </mat-card-subtitle>
+      </div>
+    </mat-card-header>
+  </mat-card>
+</div>
+
+<div class="files-container" *ngIf="uploadedFiles.length">
+  <mat-card class="fileInfo">
+    <mat-card-header>
+      <mat-card-title>Files uploaded to Google Drive</mat-card-title>
+      <mat-card-subtitle *ngFor="let uploadedFile of uploadedFiles">
+        <mat-icon>insert_drive_file</mat-icon>
+        <span *ngIf="!uploadedFile.driveUrl">
+          {{uploadedFile.name}} - {{uploadedFile.progress}}%
+          <mat-progress-bar mode="determinate" value="{{uploadedFile.progress}}"></mat-progress-bar>
+          </span>
+        <span *ngIf="uploadedFile.driveUrl">
+          <a [href]="uploadedFile.driveUrl" target="_blank">{{uploadedFile.name}}</a>
+        </span>
+        <br>
+      </mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</div>
