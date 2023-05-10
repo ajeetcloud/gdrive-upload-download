@@ -1,2 +1,2 @@
 # gdrive-upload-download
-WIP as of now
+This repository has the frontend code to integrate Google Drive Api to perform file upload with progress bar & file download.
