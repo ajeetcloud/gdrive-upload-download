@@ -102,6 +102,7 @@ export class DriveService {
   /**
    * Performs multipart Google Drive file upload with metadata.
    * Can upload files upto 5 MB or less, as per drive API.
+   *
    * @param file
    */
   uploadFileWithMetadata(file: File): Observable<HttpEvent<DriveUploadResponse>> {
@@ -123,6 +124,7 @@ export class DriveService {
   }
 
   /**
+   * Retrieves the location in which the file has to be uploaded.
    *
    * @param file
    */
@@ -143,6 +145,12 @@ export class DriveService {
       });
   }
 
+  /**
+   * Uploads files larger than 5 MB to Google Drive.
+   *
+   * @param location
+   * @param file
+   */
   uploadLargeFile(location: string, file: File): Observable<HttpEvent<DriveUploadResponse>> {
     return this.http.put<DriveUploadResponse>(location, file, {
       reportProgress: true,
