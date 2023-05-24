@@ -12,4 +12,4 @@ Multipart upload is used when the size of file is less than 5 MB and we want to 
 
 ### Resumable upload
 Resumable upload is a two step process.
-First we make a call to Google Drive API to fetch the location URI, where upload has to happen. Nex we use the location to send the file for upload.
+First we make a call to Google Drive API to fetch the location URI, where upload has to happen. Next we use the location to send the file for upload.
