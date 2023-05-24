@@ -1,5 +1,7 @@
 # gdrive-upload-download
-This repository has the frontend code to integrate Google Drive Api to perform file upload with progress bar & perform file download, using Google OAuth2. You can read more about the approach in my blog:-
+This repository has the frontend code to integrate Google Drive Api to perform file upload with progress bar & perform file download, using Google OAuth2. 
+You can read more about the approach in my blog:-
+
 https://javaninja.io/use-google-apis-to-perform-file-upload-on-google-drive-with-progress-bar/
 
 ### Demo
